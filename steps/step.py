@@ -9,12 +9,12 @@ import time
 
 @given('website "{url}"')
 def step(context, url):
-#открываем браузер
+#Открываем браузер
     context.browser = webdriver.Firefox()
     context.browser.maximize_window()
     context.browser.get("http://ya.ru")
 
-#Теперь нажмем на кнопку "Найти"
+#Нажимаем в поиске "Найти"
 @then("push button with text '{text}'")
 def step(context, text):
     WebDriverWait(context.browser, 120).until(
@@ -22,7 +22,7 @@ def step(context, text):
     )
     context.browser.find_element_by_xpath('//button').click()
 
-#Проверим, что мы на странице с результатами поиска, есть некоторый искомый текст
+#Проверка что мы на странице с нужным текстом
 @then("page include text '{text}'")
 def step(context, text):
     WebDriverWait(context.browser, 120).until(
